@@ -117,21 +117,20 @@ input, select, textarea {
     font-family: inherit;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #4a90d9;
-}
-
 .contact-container button {
     background-color: #4a90d9;
     color: white;
     border: none;
-    padding: 12px 30px;
+    padding: 12px 40px;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
+    display: block;
 }
 
+.contact-container button:hover {
+    background-color: #357abd;
+}
 .contact-container button:hover {
     background-color: #357abd;
 }
