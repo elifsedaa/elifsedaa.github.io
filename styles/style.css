@@ -81,3 +81,57 @@ padding: 10px;
 background-color: #333;
 color: white;
 }
+
+
+/* İletişim Formu Stilleri  */
+
+.contact-container {
+    width: 600px;
+    margin: 40px auto;
+    padding: 35px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.contact-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4a90d9;
+}
+
+.contact-container button {
+    background-color: #4a90d9;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contact-container button:hover {
+    background-color: #357abd;
+}
