@@ -21,6 +21,7 @@
       --radius: 12px;
     }
 
+    /* Temel sıfırlama ve font ayarları */
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -32,7 +33,7 @@
       flex-direction: column;
     }
 
-    /* ── NAV — mevcut site stili ── */
+    /* ── NAV — Navigasyon Menüsü Stili ── */
     nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -73,7 +74,7 @@
     .nav-links a:hover { color: var(--text); background: var(--surface2); }
     .nav-links a.active { color: var(--accent2); background: rgba(108, 99, 255, 0.15); }
 
-    /* ── SAYFA BAŞLIĞI ── */
+    /* ── SAYFA BAŞLIĞI — Gradyan arka plan ve başlık alanı ── */
     .page-header {
       background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
       border-bottom: 1px solid var(--border);
@@ -106,7 +107,7 @@
       margin-bottom: 0;
     }
 
-    /* ── TAB NAVIGATION ── */
+    /* ── TAB NAVIGATION — Sekmeler arası geçiş butonları ── */
     .tab-bar {
       display: flex;
       justify-content: center;
@@ -134,7 +135,7 @@
       border-bottom-color: var(--accent2);
     }
 
-    /* ── ANA İÇERİK ── */
+    /* ── ANA İÇERİK — Uygulama panellerinin kapsayıcısı ── */
     main {
       flex: 1;
       padding: 2.5rem 1rem;
@@ -145,7 +146,7 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── KART ── */
+    /* ── KART — İçerik blokları tasarımı ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -164,7 +165,7 @@
       gap: 0.5rem;
     }
 
-    /* ── FORM ELEMENTLERİ ── */
+    /* ── FORM ELEMENTLERİ — Input ve Select kutuları ── */
     .form-group {
       margin-bottom: 1.25rem;
     }
@@ -235,7 +236,7 @@
       color: var(--accent2);
     }
 
-    /* ── SONUÇ ALANLARI ── */
+    /* ── SONUÇ ALANLARI — Hesaplama sonrası açılan panel ── */
     .result-box {
       background: var(--surface2);
       border: 1px solid var(--border);
@@ -274,6 +275,7 @@
       font-size: 1rem;
     }
 
+    /* ── BADGE — Harf notu ve durum göstergeleri ── */
     .badge {
       display: inline-block;
       padding: 3px 14px;
@@ -287,7 +289,7 @@
     .badge-warn    { background: rgba(250, 204, 21, 0.15);  color: var(--warn); }
     .badge-info    { background: rgba(108, 99, 255, 0.15);  color: var(--accent2); }
 
-    /* ── BİRİM DÖNÜŞTÜRÜCÜ ÖZEL ── */
+    /* ── BİRİM DÖNÜŞTÜRÜCÜ ÖZEL — Grid yerleşimi ── */
     .converter-grid {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -338,7 +340,7 @@
       margin-top: 0.25rem;
     }
 
-    /* ── HATA MESAJI ── */
+    /* ── HATA MESAJI — Validasyon uyarıları ── */
     .error-msg {
       color: var(--danger);
       font-size: 0.85rem;
@@ -346,7 +348,7 @@
       display: none;
     }
 
-    /* ── FOOTER ── */
+    /* ── FOOTER — Sayfa alt bilgi alanı ── */
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -456,7 +458,9 @@
           <div style="text-align:center;padding:0.5rem;background:var(--surface2);border-radius:8px;"><span style="color:var(--danger);font-weight:700;">FF</span><br><span style="color:var(--muted);">0–49</span></div>
         </div>
       </div>
-    </div><div class="tab-panel" id="tab-birim">
+    </div>
+
+    <div class="tab-panel" id="tab-birim">
       <div class="card">
         <div class="card-title">Kategori Seç</div>
 
@@ -498,7 +502,9 @@
           <div class="unit-label" id="b-label">—</div>
         </div>
       </div>
-    </div></div></main>
+    </div>
+  </div>
+</main>
 
 <footer>
   © 2026 Elif Seda Demirhan — Web Programlama Laboratuvarı Lab 6
@@ -506,34 +512,31 @@
 
 <script>
 /* ═══════════════════════════════
-   TAB ROUTING
+   SEKME YÖNETİMİ (TAB ROUTING)
 ═══════════════════════════════ */
+// Belirtilen paneli gösterir ve URL'i günceller
 function switchTab(id, btn) {
-  // URL hash güncelle
   history.replaceState(null, '', '#' + id);
-
-  // panel
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-
-  // buton
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
 
-// Sayfa yüklenince hash'e göre tab aç
+// Sayfa yüklendiğinde URL'deki hash'e (#not veya #birim) göre ilgili sekmeyi açar
 window.addEventListener('DOMContentLoaded', () => {
   const hash = location.hash.replace('#', '');
   if (hash === 'birim') {
     switchTab('birim', document.querySelectorAll('.tab-btn')[1]);
   }
-  kategoriDegis(); // birim seçenekleri yükle
+  kategoriDegis(); // Başlangıçta birim listesini doldurur
 });
 
 
 /* ═══════════════════════════════
-   NOT HESAPLAMA
+   NOT HESAPLAMA MANTIĞI
 ═══════════════════════════════ */
+// Vize ve final notlarını alıp ortalamayı ve harf notunu hesaplar
 function hesaplaBot() {
   const ad    = document.getElementById('adSoyad').value.trim();
   const vize  = parseFloat(document.getElementById('vize').value);
@@ -541,6 +544,7 @@ function hesaplaBot() {
   const err   = document.getElementById('not-error');
   const box   = document.getElementById('not-result');
 
+  // Giriş validasyonu
   if (!ad || isNaN(vize) || isNaN(final) ||
       vize < 0 || vize > 100 || final < 0 || final > 100) {
     err.style.display = 'block';
@@ -549,8 +553,10 @@ function hesaplaBot() {
   }
   err.style.display = 'none';
 
+  // Ortalama hesabı: %40 Vize + %60 Final
   const ort = vize * 0.4 + final * 0.6;
 
+  // DOM elementlerini güncelleme
   document.getElementById('r-ad').textContent       = ad;
   document.getElementById('r-vize-w').textContent   = (vize * 0.4).toFixed(2);
   document.getElementById('r-final-w').textContent  = (final * 0.6).toFixed(2);
@@ -561,6 +567,7 @@ function hesaplaBot() {
   const harfEl = document.getElementById('r-harf');
   const durEl  = document.getElementById('r-durum');
 
+  // Badge renklerini ve metinlerini ayarla
   harfEl.textContent  = harf;
   harfEl.className    = 'badge ' + (ort >= 60 ? 'badge-success' : ort >= 50 ? 'badge-warn' : 'badge-danger');
   durEl.textContent   = durum ? '✓ Geçti' : '✗ Kaldı';
@@ -569,6 +576,7 @@ function hesaplaBot() {
   box.classList.add('show');
 }
 
+// Ortalamaya göre harf notu döndürür
 function harfNotu(ort) {
   if (ort >= 90) return 'AA';
   if (ort >= 85) return 'BA';
@@ -581,6 +589,7 @@ function harfNotu(ort) {
   return 'FF';
 }
 
+// Form alanlarını ve sonuç kutusunu temizler
 function temizleNot() {
   ['adSoyad','vize','final'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('not-error').style.display = 'none';
@@ -589,8 +598,9 @@ function temizleNot() {
 
 
 /* ═══════════════════════════════
-   BİRİM DÖNÜŞTÜRÜCÜ
+   BİRİM DÖNÜŞTÜRÜCÜ MANTIĞI
 ═══════════════════════════════ */
+// Kullanılacak birim verileri
 const birimler = {
   sicaklik: ['°C', '°F', 'K'],
   uzunluk:  ['Metre (m)', 'Kilometre (km)', 'Santimetre (cm)', 'Milimetre (mm)', 'Mil (mi)', 'Yard (yd)', 'Feet (ft)', 'İnç (in)'],
@@ -605,6 +615,7 @@ const titles = {
   hacim:    'Hacim Dönüştürücü',
 };
 
+// Kategori değiştiğinde select kutularını ve başlığı günceller
 function kategoriDegis() {
   const kat = document.getElementById('kategori').value;
   const list = birimler[kat];
@@ -621,6 +632,7 @@ function kategoriDegis() {
   document.getElementById('birimInput').value = '';
 }
 
+// Kaynak ve hedef birimleri yer değiştirir
 function swapBirim() {
   const k = document.getElementById('kaynakBirim');
   const h = document.getElementById('hedefBirim');
@@ -628,6 +640,7 @@ function swapBirim() {
   donustur();
 }
 
+// Dönüştürme işlemini tetikleyen ana fonksiyon
 function donustur() {
   const val = parseFloat(document.getElementById('birimInput').value);
   const err = document.getElementById('birim-error');
@@ -645,21 +658,23 @@ function donustur() {
   const hedef  = document.getElementById('hedefBirim').value;
 
   let sonuc;
-
+  // Sıcaklık özel formül gerektirdiği için ayrıldı
   if (kat === 'sicaklik') {
     sonuc = donusturSicaklik(val, kaynak, hedef);
   } else {
     sonuc = donusturGenel(val, kaynak, hedef, kat);
   }
 
+  // Sonucu Türk standartlarında formatla
   const fmt = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 6 });
   document.getElementById('b-sonuc').textContent = fmt.format(sonuc);
   document.getElementById('b-label').textContent = `${fmt.format(val)} ${kaynak} = ${fmt.format(sonuc)} ${hedef}`;
   res.style.display = 'block';
 }
 
+// Sıcaklık dönüşüm formülleri
 function donusturSicaklik(val, k, h) {
-  let c; // önce Celsius'a çevir
+  let c; // Ortak birim Celsius'a çevir
   if      (k === '°C') c = val;
   else if (k === '°F') c = (val - 32) * 5/9;
   else                 c = val - 273.15;
@@ -669,21 +684,22 @@ function donusturSicaklik(val, k, h) {
   else                 return c + 273.15;
 }
 
-// SI katsayıları (temel birime göre)
+// SI katsayıları tablosu (Temel birime göre çarpanlar)
 const siKatsayilari = {
-  // uzunluk → metre
+  // uzunluk → temel: metre
   'Metre (m)': 1, 'Kilometre (km)': 1000, 'Santimetre (cm)': 0.01,
   'Milimetre (mm)': 0.001, 'Mil (mi)': 1609.344,
   'Yard (yd)': 0.9144, 'Feet (ft)': 0.3048, 'İnç (in)': 0.0254,
-  // kütle → kg
+  // kütle → temel: kilogram
   'Kilogram (kg)': 1, 'Gram (g)': 0.001, 'Miligram (mg)': 0.000001,
   'Pound (lb)': 0.453592, 'Ons (oz)': 0.0283495,
-  // hacim → litre
+  // hacim → temel: litre
   'Litre (L)': 1, 'Mililitre (mL)': 0.001,
   'Galon (gal)': 3.78541, 'Bardak (cup)': 0.236588,
   'Yemek Kaşığı (tbsp)': 0.0147868,
 };
 
+// Orantı yoluyla birim dönüşümü yapan genel fonksiyon
 function donusturGenel(val, k, h) {
   const temel = val * siKatsayilari[k];
   return temel / siKatsayilari[h];
