@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hafta 7 - Etkinlik Kayıt | Elif Seda Demirhan</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Hafta 7 özel CSS -->
+  <link rel="stylesheet" href="styles/hafta7.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="bi bi-mortarboard me-2"></i>Elif Seda Demirhan
+      </a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Menüyü aç/kapat">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-house me-1"></i>Ana Sayfa
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="hafta7.html">
+              <i class="bi bi-calendar3 me-1"></i>Hafta 7 Uygulaması
+            </a>
+          </li>
+        </ul>
+
+        <button id="temaBtn" class="btn btn-outline-light">
+          <i id="temaBtnIcon" class="bi bi-moon"></i>
+          <span id="temaBtnText">Koyu Tema</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════ -->
+  <section class="hero-section text-white py-5">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="display-5 fw-bold mb-3">Etkinlik Kayıt Sistemi</h1>
+          <p class="lead mb-4">
+            Yapay zeka, web geliştirme ve veri bilimi alanlarındaki
+            etkinliklerimize hemen başvur. Kariyerini birlikte şekillendirelim.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#form-bolumu" class="btn btn-light btn-lg fw-semibold px-4">
+              <i class="bi bi-pencil-square me-2"></i>Hemen Başvur
+            </a>
+            <a href="#etkinlikler" class="btn btn-outline-light btn-lg px-4">
+              <i class="bi bi-calendar-event me-2"></i>Etkinlikleri Gör
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       ETKİNLİK KARTLARI
+  ════════════════════════════════════════════════════ -->
+  <section id="etkinlikler" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Güncel Etkinlikler</h2>
+
+      <div class="row g-4">
+
+        <!-- Kart 1 -->
+        <div class="col-md-4">
+          <div class="card event-card shadow h-100">
+            <div class="card-header bg-primary text-white">
+              <i class="bi bi-cpu"></i>Yapay Zeka Atölyesi
+            </div>
+            <div class="card-body">
+              <span class="badge bg-success mb-2">Kayıtlar Açık</span>
+              <p class="card-text">
+                Makine öğrenmesi temellerinden derin öğrenmeye uzanan
+                kapsamlı 2 günlük pratik atölye. PyTorch ve TensorFlow
+                uygulamaları dahil.
+              </p>
+              <ul class="event-meta mt-3">
+                <li><i class="bi bi-calendar"></i>15 Mayıs 2025</li>
+                <li><i class="bi bi-geo-alt"></i>Marmara Üniversitesi, İstanbul</li>
+                <li><i class="bi bi-people"></i>Kontenjan: 40 kişi</li>
+              </ul>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a href="#form-bolumu" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-box-arrow-in-right me-1"></i>Başvur
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 2 -->
+        <div class="col-md-4">
+          <div class="card event-card shadow h-100">
+            <div class="card-header bg-success text-white">
+              <i class="bi bi-code-slash"></i>Web Geliştirme Semineri
+            </div>
+            <div class="card-body">
+              <span class="badge bg-warning text-dark mb-2">Son 10 Yer</span>
+              <p class="card-text">
+                Modern web teknolojileri: React, Node.js, REST API ve
+                DevOps pratikleri. Sektör profesyonelleriyle birebir
+                mentorluk imkânı.
+              </p>
+              <ul class="event-meta mt-3">
+                <li><i class="bi bi-calendar"></i>22 Mayıs 2025</li>
+                <li><i class="bi bi-camera-video"></i>Online (Zoom)</li>
+                <li><i class="bi bi-people"></i>Kontenjan: 25 kişi</li>
+              </ul>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a href="#form-bolumu" class="btn btn-success btn-sm w-100">
+                <i class="bi bi-box-arrow-in-right me-1"></i>Başvur
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3 -->
+        <div class="col-md-4">
+          <div class="card event-card shadow h-100">
+            <div class="card-header bg-warning text-dark">
+              <i class="bi bi-bar-chart-line"></i>Veri Bilimi Mini Bootcamp
+            </div>
+            <div class="card-body">
+              <span class="badge bg-primary mb-2">Yeni</span>
+              <p class="card-text">
+                Python ile veri analizi, görselleştirme ve tahminleme
+                modelleri üzerine yoğun 3 günlük bootcamp. Pandas,
+                Matplotlib ve Scikit-learn odaklı.
+              </p>
+              <ul class="event-meta mt-3">
+                <li><i class="bi bi-calendar"></i>1–3 Haziran 2025</li>
+                <li><i class="bi bi-laptop"></i>Hibrit (Kampüs + Online)</li>
+                <li><i class="bi bi-people"></i>Kontenjan: 30 kişi</li>
+              </ul>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a href="#form-bolumu" class="btn btn-warning btn-sm w-100 text-dark">
+                <i class="bi bi-box-arrow-in-right me-1"></i>Başvur
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       BAŞVURU FORMU
+  ════════════════════════════════════════════════════ -->
+  <section id="form-bolumu" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Etkinlik Başvurusu</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="form-section p-4 p-md-5 shadow-sm">
+
+            <!-- Hata uyarısı -->
+            <div id="formUyari" class="alert alert-danger d-flex align-items-center gap-2 d-none" role="alert">
+              <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
+              Lütfen tüm alanları doldurun ve KVKK onayını işaretleyin.
+            </div>
+
+            <form id="basvuruForm" novalidate>
+
+              <!-- Ad Soyad + E-posta -->
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="adSoyad" class="form-label">
+                    <i class="bi bi-person"></i>Ad Soyad <span class="text-danger">*</span>
+                  </label>
+                  <input type="text" class="form-control" id="adSoyad" placeholder="Elif Seda Demirhan" />
+                </div>
+                <div class="col-md-6">
+                  <label for="eposta" class="form-label">
+                    <i class="bi bi-envelope"></i>E-posta <span class="text-danger">*</span>
+                  </label>
+                  <input type="email" class="form-control" id="eposta" placeholder="ornek@email.com" />
+                </div>
+              </div>
+
+              <!-- Telefon + Etkinlik -->
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="telefon" class="form-label">
+                    <i class="bi bi-telephone"></i>Telefon <span class="text-danger">*</span>
+                  </label>
+                  <input type="tel" class="form-control" id="telefon" placeholder="05XX XXX XX XX" />
+                </div>
+                <div class="col-md-6">
+                  <label for="etkinlik" class="form-label">
+                    <i class="bi bi-calendar-event"></i>Etkinlik <span class="text-danger">*</span>
+                  </label>
+                  <select class="form-select" id="etkinlik">
+                    <option value="">-- Seçiniz --</option>
+                    <option value="yapay-zeka">Yapay Zeka Atölyesi</option>
+                    <option value="web-gelistirme">Web Geliştirme Semineri</option>
+                    <option value="veri-bilimi">Veri Bilimi Mini Bootcamp</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Katılım Türü -->
+              <div class="mb-3">
+                <label for="katilimTuru" class="form-label">
+                  <i class="bi bi-geo-alt"></i>Katılım Türü <span class="text-danger">*</span>
+                </label>
+                <select class="form-select" id="katilimTuru">
+                  <option value="">-- Seçiniz --</option>
+                  <option value="yuz-yuze">Yüz Yüze</option>
+                  <option value="online">Online (Canlı)</option>
+                  <option value="hibrit">Hibrit</option>
+                </select>
+              </div>
+
+              <!-- Motivasyon -->
+              <div class="mb-3">
+                <label for="motivasyon" class="form-label">
+                  <i class="bi bi-chat-left-text"></i>Motivasyon
+                  <span class="text-danger">*</span>
+                  <small class="text-muted fw-normal ms-1">— Neden katılmak istiyorsunuz?</small>
+                </label>
+                <textarea class="form-control" id="motivasyon" rows="4"
+                  placeholder="Bu etkinliğe katılmak istememin sebebi..."></textarea>
+              </div>
+
+              <!-- KVKK -->
+              <div class="mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="kvkk" />
+                  <label class="form-check-label" for="kvkk">
+                    Kişisel verilerimin işlenmesine ilişkin
+                    <strong>KVKK Aydınlatma Metni</strong>'ni okudum, onaylıyorum.
+                    <span class="text-danger">*</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Gönder -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg fw-semibold">
+                  <i class="bi bi-send me-2"></i>Başvuruyu Tamamla
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Başvuru özeti (JS tarafından doldurulur) -->
+          <div id="basvuruOzet" class="mt-4"></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════ -->
+  <footer class="py-4">
+    <div class="container text-center text-white-50">
+      <p class="mb-1">
+        &copy; 2025 Elif Seda Demirhan — Web Programlama Laboratuvarı, Hafta 7
+      </p>
+      <a href="index.html" class="text-white-50 text-decoration-none small">
+        <i class="bi bi-arrow-left me-1"></i>Portfolyoya Dön
+      </a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Hafta 7 JS -->
+  <script src="scripts/hafta7.js"></script>
+
+</body>
+</html>
