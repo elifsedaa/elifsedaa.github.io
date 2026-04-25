@@ -44,6 +44,11 @@ form.addEventListener('submit', function (e) {
     uyariDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
+  
+  if (telefon.replace(/\D/g, '').length < 10) {
+  uyariDiv.classList.remove('d-none');
+  return;
+}
 
   uyariDiv.classList.add('d-none');
 
